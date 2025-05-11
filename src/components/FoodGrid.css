@@ -1,0 +1,43 @@
+.food-grid-container {
+  overflow: hidden;
+  border: 3px solid rgb(255, 179, 0);
+  border-radius: 20px;
+  padding: 20px 0;
+  background-color: #ffa53d;
+  position: relative;
+}
+
+.food-items-track {
+  display: flex;
+  gap: 30px;
+  width: fit-content;
+  animation: scrollLeft 15s linear infinite;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.food-item {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #ffa53d;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.food-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

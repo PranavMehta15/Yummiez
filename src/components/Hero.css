@@ -1,0 +1,25 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px; 
+}
+
+.top-logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px; 
+}
+
+.hero-text {
+  text-align: center;
+  margin-top: 0; 
+}
+
+.hero-text h1 {
+  margin: 10px 0 5px; 
+}
+
+.hero-text p {
+  margin: 5px 0;
+}
