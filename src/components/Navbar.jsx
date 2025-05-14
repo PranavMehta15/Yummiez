@@ -11,6 +11,7 @@ export default function Navbar() {
   const openSignup = () => setPopupType("signup");
   const closePopup = () => setPopupType(null);
 //Hello i am himanshu Singh
+//Kartik 
   return (
     <nav className="navbar">
       <div className="logo">YUMMIEZ</div>
