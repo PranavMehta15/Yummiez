@@ -3,6 +3,7 @@ import LoginPopup from './LoginPopup';
 import SignUpPop from './SignUpPop';
 import { useState } from 'react';
 import Partner from './partnership';
+import { Link } from 'react-router-dom';
  
 export default function Navbar() {
   const [popupType, setPopupType] = useState(null); // "login", "signup", or "partner"
@@ -13,7 +14,7 @@ export default function Navbar() {
  
   return (
     <nav className="navbar">
-      <div className="logo">YUMMIEZ</div>
+      <div className="logo"><Link to={"/"}>YUMMIEZ</Link></div>
       <div className="nav-buttons">
         <button className="partner-btn" onClick={openPartner}>Yummiez Partner</button>
         <button className="login-btn" onClick={openLogin}>Login</button>

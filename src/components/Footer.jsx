@@ -3,6 +3,7 @@ import "./Footer.css";
 import LoginPopup from "./LoginPopup"; // Import LoginPopup
 import SignUpPopup from "./SignUpPop"; // Import SignUpPopup
 import logo from "../assets/logo.png"; // Replace with your logo path
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -36,10 +37,10 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Company</h4>
             <ul>
-              <li><a href="/about">About Us</a></li>
+              <li><Link to={"/about"}><a href="/about">About Us</a></Link></li>
               <li><a href="/careers">Careers</a></li>
               <li><a href="/team">Team</a></li>
-              <li><a href="/pro">Yummiez Pro</a></li> {/* Added Yummiez Pro */}
+              <li><Link to={"/contactUs"}><a href="/pro">Contact Us</a></Link></li> {/* Added Yummiez Pro */}
             </ul>
           </div>
           <div className="footer-column">

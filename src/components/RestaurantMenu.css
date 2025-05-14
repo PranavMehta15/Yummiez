@@ -1,0 +1,66 @@
+/* General container styling */
+.restaurant-menu-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Restaurant details styling */
+.restaurant-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.restaurant-details h1 {
+  font-size: 2rem;
+  color: #ff5722;
+}
+
+.restaurant-details h2 {
+  font-size: 1.2rem;
+  color: #757575;
+  margin: 5px 0;
+}
+
+/* Menu list styling */
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.menu-list img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  margin-right: 15px;
+}
+
+.menu-list .item-name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  margin-right: 10px;
+}
+
+.menu-list .item-name:hover {
+  color: #ff5722;
+  cursor: pointer;
+}
+
+/* Price styling */
+.menu-list .item-price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: red; /* Green color for price */
+  margin-left: auto; /* Push price to the right */
+}
