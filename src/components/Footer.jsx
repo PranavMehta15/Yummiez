@@ -11,7 +11,6 @@ const Footer = () => {
   const openLogin = (e) => {
     e.preventDefault();
     setIsLoginOpen(true);
-    
   };
 
   const closeLogin = () => setIsLoginOpen(false);
