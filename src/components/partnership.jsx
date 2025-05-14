@@ -1,42 +1,53 @@
 import React, { useState } from "react";
-import './partnership.css';
-function Partner() {
+import "./LoginPopup.css";
+
+function Partner({ onClose }) {
     const [showRegisterPage, setShowRegisterPage] = useState(false);
 
     return (
-        <div className="partner-container">
-            <div className="partner-header">
-                <h1>Partner with Yummiez</h1>
-                <p>Access</p>
+        <div className="modal-overlay">
+            <div className="modal-content">
+                <button className="close-btn" onClick={onClose}>
+                    &times;
+                </button>
+
+                {/* Get Started Page */}
+                {!showRegisterPage && (
+                    <div className="get-started-form">
+                        <div className="modal-header">
+                            <h1>Partner with Yummiez</h1>
+                            <p>Access</p>
+                        </div>
+                        <h2>Get Started</h2>
+                        <p>Enter a mobile number or restaurant ID to continue</p>
+                        <form>
+                            <input
+                                type="text"
+                                placeholder="Enter Restaurant ID / Mobile number"
+                                required
+                            />
+                            <div className="button-container">
+                            <button type="submit" className="continue-btn" style={{ marginTop: "2px" }}>Continue</button>
+                            <button
+                                type="button"
+                                className="register-btn"
+                                onClick={() => setShowRegisterPage(true)}
+                                style={{ marginTop: "10px" }}
+                            >
+                                Register
+                            </button>
+                            </div>
+                            
+                        </form>
+                        <p className="terms">
+                            By logging in, I agree to Yummiez’s <a href="#">terms & conditions</a>
+                        </p>
+                    </div>
+                )}
+
+                {/* Register Page */}
+                {showRegisterPage && <Register onBack={() => setShowRegisterPage(false)} />}
             </div>
-
-            {!showRegisterPage && (
-                <div className="partner-form get-started-form">
-                    <h2>Get Started</h2>
-                    <p>Enter a mobile number or restaurant ID to continue</p>
-                    <form>
-                        <input
-                            type="text"
-                            placeholder="Enter Restaurant ID / Mobile number"
-                            required
-                        />
-                        <button type="submit" style={{ marginTop: "2px" }}>Continue</button>
-                        <button
-                            type="button"
-                            onClick={() => setShowRegisterPage(true)}
-                            style={{ marginTop: "10px" }}
-                        >
-                            Register
-                        </button>
-                    </form>
-                    <p className="terms">
-                        By logging in, I agree to Yummiez’s <a href="#">terms & conditions</a>
-                    </p>
-                </div>
-            )}
-
-            {/* Register Page */}
-            {showRegisterPage && <Register onBack={() => setShowRegisterPage(false)} />}
         </div>
     );
 }
@@ -58,13 +69,39 @@ function Register({ onBack }) {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert("Form submitted successfully!");
+
+        try {
+            const response = await fetch("http://localhost:3000/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                alert("User registered successfully!");
+                setFormData({
+                    id: generateRestaurantId(),
+                    name: "",
+                    address: "",
+                    phone: "",
+                    email: "",
+                });
+                onBack();
+            } else {
+                const errorData = await response.json();
+                console.error("Error response from server:", errorData);
+                alert("Failed to register user. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error registering user:", error);
+            alert("An error occurred while registering. Please check the console for details.");
+        }
     };
 
     return (
-        <div className="partner-form restaurant-details-form">
+        <div className="restaurant-details-form">
             <h2>Register Your Restaurant</h2>
             <p>Enter the details of your restaurant to register</p>
             <form onSubmit={handleSubmit}>
@@ -78,7 +115,7 @@ function Register({ onBack }) {
                                     name="id"
                                     type="text"
                                     value={formData.id}
-                                    readOnly // Make the field read-only
+                                    readOnly
                                 />
                             </td>
                         </tr>
@@ -140,14 +177,18 @@ function Register({ onBack }) {
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit">Register</button>
+                <div className="button-container">
+                <button type="submit" className="register-btn">Register</button>
                 <button
                     type="button"
+                    className="continue-btn"
                     onClick={onBack}
                     style={{ marginTop: "10px" }}
                 >
                     Back
                 </button>
+                </div>
+                
             </form>
         </div>
     );

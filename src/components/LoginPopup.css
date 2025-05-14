@@ -182,145 +182,171 @@
   font-style: italic;
   margin-top: 10px;
 }
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.7s ease-in-out;
-}
 
-.modal-content {
-  background: lavender;
+/* Style for the Get Started form */
+.get-started-form {
+  text-align: center;
   padding: 2rem;
-  border-radius: 10px;
-  min-width: 320px;
-  max-width: 500px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  transform: scale(0.9);
-  opacity: 0;
-  animation: popupIn 0.7s forwards;
-  font-family: 'Arial', sans-serif;
-  color: #333;
 }
 
-.modal-content h2 {
+.get-started-form h2 {
+  font-size: 2rem;
+  color: #6D712E; /* Matches the modal-content h2 color */
   margin-bottom: 1rem;
-  text-align: left;
-  font-size: 1.5rem;
-  color: #f04e30;
 }
 
-.modal-content img {
-  width: 100px;
-  height: 100px;
-  float: right;
-  margin-left: 1rem; 
-  border-radius: 50%;
-}
-
-.modal-content table {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.5;
-  margin-top: 1rem;
-}
-
-.modal-content table tr {
+.get-started-form p {
+  font-size: 1rem;
+  color: #555555;
   margin-bottom: 1.5rem;
 }
 
-.modal-content td {
-  padding: 0.5rem 0;
+/* Style for the modal header */
+.modal-header {
+  margin-bottom: 1.5rem;
 }
 
-.modal-content label {
+.modal-header h1 {
+  font-size: 2.5rem;
+  color: #6D712E;
   margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #555; 
 }
 
-.modal-content input {
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 100%; 
+.modal-header p {
   font-size: 1rem;
+  color: #888888;
 }
 
-.modal-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem; 
+/* Style for the terms and conditions text */
+.terms {
+  font-size: 0.9rem;
+  color: #666666;
+  margin-top: 1rem;
 }
 
-.modal-buttons button {
-  padding: 0.5rem 1.5rem;
-  border: none;
-  background-color: #f04e30;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-}
-
-.modal-buttons button:hover {
-  background-color: #d23b20;
-}
-
-#a {
-  color: #f04e30;
+.terms a {
+  color: #E07A5F;
   text-decoration: none;
-  display: block;
-  margin: 1rem auto;
-  text-align: center;
   font-weight: bold;
 }
 
-.modal-overlay.closing {
-  animation: fadeOut 0.7s ease-in-out forwards;
+.terms a:hover {
+  color: #6D712E;
 }
 
-.modal-content.closing {
-  animation: popupOut 0.7s forwards;
+/* Style for the Restaurant Details form */
+.restaurant-details-form {
+  padding: 2rem;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+.restaurant-details-form h2 {
+  font-size: 2rem;
+  color: #6D712E;
+  margin-bottom: 1rem;
 }
 
-@keyframes popupIn {
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+.restaurant-details-form p {
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 1.5rem;
 }
 
-@keyframes fadeOut {
-  to {
-    opacity: 0;
-  }
+.restaurant-details-form table {
+  width: 100%;
+  margin-top: 1rem;
 }
 
-@keyframes popupOut {
-  to {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-} */
+.restaurant-details-form table td {
+  padding: 0.5rem 0;
+}
+
+.restaurant-details-form label {
+  font-weight: bold;
+  color: #444444;
+}
+
+.restaurant-details-form input {
+  padding: 0.8rem;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.restaurant-details-form input:focus {
+  border-color: #6D712E;
+  outline: none;
+}
+
+/* Style for the close button */
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #6D712E; /* Highlight color on hover */
+}
+
+/* Style for the continue button */
+.continue-btn {
+  padding: 0.8rem 2rem;
+  background-color: #FA8072; /* Zomato's red */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.continue-btn:hover {
+  background-color: #6D712E; /* Darker red on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.continue-btn:active {
+  transform: translateY(0); /* Reset on click */
+}
+
+/* Style for the register button */
+/* Style for the register button */
+.register-btn {
+  padding: 0.8rem 2rem;
+  background-color: #fa8072; /* Matches the modal theme */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem; /* Adds spacing between the buttons */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-btn:hover {
+  background-color: #6D712E; /* Swap to Zomato's red on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.register-btn:active {
+  transform: translateY(0);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Adds spacing between the buttons */
+  margin-top: 1rem;
+  justify-content: space-between;
+  margin-top: 2rem; /* Adds spacing between the buttons */
+}
