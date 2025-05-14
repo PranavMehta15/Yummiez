@@ -10,7 +10,7 @@ export default function Navbar() {
   const openLogin = () => setPopupType("login");
   const openSignup = () => setPopupType("signup");
   const closePopup = () => setPopupType(null);
-
+//Hello i am himanshu Singh
   return (
     <nav className="navbar">
       <div className="logo">YUMMIEZ</div>
