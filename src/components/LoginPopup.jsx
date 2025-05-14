@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./LoginPopup.css";
 import logo from "../assets/fries_logo.png";
 import ForgetPassword from "./ForgetPassword";
-import database from "../database.json"; // Import the JSON file
 
 export default function LoginPopup({ onClose }) {
     const [username, setUsername] = useState("");
@@ -19,28 +18,42 @@ export default function LoginPopup({ onClose }) {
         }, 700);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Simulate checking the database
-        const user = database.users.find((user) => user.username === username);
+        try {
+            // Fetch the database.json file from localhost
+            const response = await fetch("http://localhost:5000/users");
+            if (!response.ok) {
+                throw new Error("Failed to fetch user database.");
+            }
+            const users = await response.json();
 
-        if (!user) {
-            setError("Username or Password are incorrect.");
-            return;
+            const user = users.find((user) => user.username === username);
+
+            if (!user) {
+                setError("Username or Password are incorrect.");
+                console.log("Login failed: User not found.");
+                return;
+            }
+
+            if (user.password !== password) {
+                setError("Incorrect password.");
+                console.log("Login failed: Incorrect password.");
+                return;
+            }
+
+            setSuccessMessage(`Logged in successfully as: ${username}`);
+            setError("");
+            console.log(`Login successful for user: ${username}`);
+
+            setTimeout(() => {
+                triggerClose();
+            }, 3000); // Close the modal after 3 seconds
+        } catch (error) {
+            console.error("Error during login:", error);
+            setError("An error occurred while logging in. Please try again later.");
         }
-
-        if (user.password !== password) {
-            setError("Incorrect password.");
-            return;
-        }
-
-        setSuccessMessage(`Logged in successfully as: ${username}`);
-        setError("");
-
-        setTimeout(() => {
-            triggerClose();
-        }, 1000); // Close the modal after 3 seconds
     };
 
     return (

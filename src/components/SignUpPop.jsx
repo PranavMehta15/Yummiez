@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./LoginPopup.css";
 import logo from "../assets/logo.png";
-import database from "../database.json"; // Import the JSON file
 
 export default function SignUpPop({ onClose }) {
     const [username, setUsername] = useState("");
@@ -23,7 +22,7 @@ export default function SignUpPop({ onClose }) {
         return regex.test(email);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!validateEmail(email)) {
@@ -46,29 +45,43 @@ export default function SignUpPop({ onClose }) {
             return;
         }
 
-        // Simulate adding the user to the database
-        const newUser = { 
-            id: Math.random().toString(36).substr(2, 4), // Generate a random ID
-            username, 
-            email, 
-            password, 
-            securityAnswer 
-        };
+        try {
+            // Connect to the database using localhost
+            const response = await fetch("http://localhost:5000/users");
+            const users = await response.json();
+            const userExists = users.some((user) => user.username === username || user.email === email);
 
-        const userExists = database.users.some((user) => user.username === username || user.email === email);
+            if (userExists) {
+                setError("A user with this username or email already exists.");
+                return;
+            }
 
-        if (userExists) {
-            setError("A user with this username or email already exists.");
-            return;
+            // Add the new user
+            const newUser = {
+                id: Math.random().toString(36).substr(2, 4), // Generate a random ID
+                username,
+                email,
+                password,
+                securityAnswer,
+            };
+
+            await fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newUser),
+            });
+
+            setSuccessMessage(`Signed up successfully as: ${username}`);
+            setError("");
+
+            setTimeout(() => {
+                triggerClose();
+            }, 1000);
+        } catch (err) {
+            setError("An error occurred while signing up. Please try again.");
         }
-
-        database.users.push(newUser);
-        setSuccessMessage(`Signed up successfully as: ${username}`);
-        setError("");
-
-        setTimeout(() => {
-            triggerClose();
-        }, 1000);
     };
 
     const triggerClose = () => {

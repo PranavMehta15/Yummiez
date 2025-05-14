@@ -27,6 +27,13 @@
       "email": "rupa@das.com",
       "password": "Rupadas@2002",
       "securityAnswer": "rupa"
+    },
+    {
+      "id": "fw90",
+      "username": "hello",
+      "email": "hello@hello.com",
+      "password": "Hello@12345",
+      "securityAnswer": "hello"
     }
   ]
 }
