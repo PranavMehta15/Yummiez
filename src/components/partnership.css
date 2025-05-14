@@ -1,0 +1,122 @@
+/* General container styling */
+.partner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #FA8072; /* Updated background color */
+    min-height: 100vh;
+    color: #fff; /* Ensure text is visible on the new background */
+  }
+  
+  /* Header styling */
+  .partner-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .partner-header h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .partner-header p {
+    font-size: 1.2rem;
+    color: #f9f9f9;
+  }
+  
+  /* Form container styling */
+  .partner-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeIn 0.5s ease-in-out;
+    color: #333;
+  }
+  
+  /* Form heading */
+  .partner-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Form description */
+  .partner-form p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #666;
+    text-align: center;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  td {
+    padding: 10px;
+    vertical-align: top;
+  }
+  
+  td:first-child {
+    text-align: right;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #fc8019;
+    outline: none;
+    box-shadow: 0 0 5px rgba(252, 128, 25, 0.5);
+  }
+  
+  /* Buttons */
+  .partner-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #fc8019;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .partner-form button:hover {
+    background-color: #e67317;
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
