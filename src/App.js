@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 // import FoodGrid from './components/FoodGrid';
 import Home from './components/Home';
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Hero />
       {/* <FoodGrid/> */}
       <Home />
+    <Footer />
     </div>
   );
 }
