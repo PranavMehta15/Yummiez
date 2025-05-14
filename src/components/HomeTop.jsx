@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import "./HomeTop.css";
 import { dishes } from "./Constant";
 
