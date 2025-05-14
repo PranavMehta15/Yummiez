@@ -1,0 +1,28 @@
+.slider-container2 {
+    display: flex;
+    width: 100vw; /* Make sure it spans the full viewport width */
+    overflow-x: auto; 
+    scrollbar-width: none; /* Hides scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer */
+    padding: 10px;
+    border-radius: 20px;    
+}
+
+.slider-container2::-webkit-scrollbar {
+    display: none; /* Hides scrollbar for WebKit-based browsers */
+}
+
+.card2 {
+    display: flex;
+    width: 100%; /* Ensures all cards fit in one row */
+    gap: 8px; /* Space between cards */
+}
+
+.card2 div {
+    flex: 1; /* Distributes card width evenly */
+    min-width: calc(100vw / 5); /* Adjusting to fit within the viewport */
+    flex-shrink: 0; /* Prevent shrinking */
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}

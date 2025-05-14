@@ -1,0 +1,326 @@
+@import url('https://fonts.cdnfonts.com/css/metropolis');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay for better contrast */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.modal-content {
+  background: lavender; /* Clean white background */
+  padding: 2.5rem;
+  border-radius: 12px; /* Softer corners for a modern look */
+  min-width: 360px;
+  max-width: 520px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3); /* Deeper shadow for a premium feel */
+  transform: scale(0.8);
+  opacity: 0;
+  font-family: 'Metropolis', Arial, sans-serif; /* Elegant font for a premium touch */
+  animation: popupIn 0.4s forwards;
+  color: #333333;
+}
+
+.modal-content h2 {
+  margin-bottom: 1.5rem;
+  text-align: left;
+  font-size: 2.5rem; /* Larger font for better readability */
+  font-weight: bold;
+  color: #6D712E; /* Zomato's signature red */
+}
+
+.modal-content img {
+  width: 90px; /* Balanced size for the image */
+  height: 90px;
+  float: right;
+  margin-left: 1.5rem;
+ /* Adds a premium touch */
+}
+
+.modal-content table {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.8; /* Improved line height for readability */
+  margin-top: 1.5rem;
+}
+
+.modal-content table tr {
+  margin-bottom: 1.2rem; /* Balanced spacing */
+}
+
+.modal-content td {
+  padding: 0.6rem 0;
+}
+
+.modal-content label {
+  margin-bottom: 0.5rem;
+  font-weight: 700; /* Stronger emphasis on labels */
+  color: #444444;
+}
+
+.modal-content input {
+  padding: 0.9rem; /* Larger padding for better usability */
+  margin-top: 0.3rem;
+  border: 1px solid #cccccc; /* Subtle border */
+  border-radius: 6px;
+  width: 100%;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus {
+  border-color: #6D712E; /* Highlight input on focus */
+  outline: none;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.modal-buttons button {
+  padding: 0.9rem 2.5rem; /* Larger buttons for better usability */
+  border: none;
+  background-color: #FA8072; /* Zomato's red */
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #6D712E; /* Darker red on hover */
+  transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.modal-buttons button:active {
+  transform: translateY(0); /* Reset on click */
+}
+
+#a {
+  color: #E07A5F;
+  text-decoration: none;
+  display: block;
+  margin: 1.5rem auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+#a:hover {
+  color: #6D712E; /* Darker red on hover */
+}
+
+.modal-overlay.closing {
+  animation: fadeOut 0.4s ease-in-out forwards;
+}
+
+.modal-content.closing {
+  animation: popupOut 0.4s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes popupOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+.success{
+  color:green;
+  font-weight: bold;
+  font-style: italic;
+  margin-top: 10px;
+}
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+.modal-content {
+  background: lavender;
+  padding: 2rem;
+  border-radius: 10px;
+  min-width: 320px;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transform: scale(0.9);
+  opacity: 0;
+  animation: popupIn 0.7s forwards;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  text-align: left;
+  font-size: 1.5rem;
+  color: #f04e30;
+}
+
+.modal-content img {
+  width: 100px;
+  height: 100px;
+  float: right;
+  margin-left: 1rem; 
+  border-radius: 50%;
+}
+
+.modal-content table {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+.modal-content table tr {
+  margin-bottom: 1.5rem;
+}
+
+.modal-content td {
+  padding: 0.5rem 0;
+}
+
+.modal-content label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #555; 
+}
+
+.modal-content input {
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; 
+  font-size: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem; 
+}
+
+.modal-buttons button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: #f04e30;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #d23b20;
+}
+
+#a {
+  color: #f04e30;
+  text-decoration: none;
+  display: block;
+  margin: 1rem auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+.modal-overlay.closing {
+  animation: fadeOut 0.7s ease-in-out forwards;
+}
+
+.modal-content.closing {
+  animation: popupOut 0.7s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes popupOut {
+  to {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+} */

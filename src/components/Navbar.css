@@ -2,19 +2,30 @@
   display: flex;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: #ff9431;
+  background-color: #FA8072;
   align-items: center;
 }
+
 .logo {
   font-size: 2rem;
   font-weight: bold;
 }
+
 .nav-buttons button {
   margin-left: 10px;
-  padding: 8px 12px;
+  padding: 12px 16px; /* Increased padding for larger buttons */
+  font-size: 1.2rem; /* Optional: Adjust font size for better proportion */
   border: none;
-  border-radius: 6px;
-  background-color: #751e0c;
-  color: white;
+  font-family: "Metropolis", Arial, sans-serif; /* Ensure consistent font */
+  font-weight: bold;
+  border-radius: 50px;
+  background-color: #FA8072;
+  color: black;
   cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-buttons button:hover {
+  background-color: #6D712e;
+  color: lavender;
 }
