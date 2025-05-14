@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './partnership.css';
 function Partner() {
     const [showRegisterPage, setShowRegisterPage] = useState(false);
 
