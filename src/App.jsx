@@ -1,15 +1,16 @@
 // src/App.js
 import React from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Home from './components/Home';
-import Footer from "./components/Footer";
+import Navbar from './components/Navbar.jsx';
+import Hero from './components/Hero.jsx';
+import Home from './components/Home.jsx';
+import Footer from "./components/Footer.jsx";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
-import About from "../src/components/About.jsx";
-import Error from "../src/components/Error.jsx"; // Import the Error component
-import ContactUs from "../src/components/ContactUs.jsx"; // Import the ContactUs component
+import About from "./components/About.jsx";
+import Error from "./components/Error.jsx"; // Import the Error component
+import ContactUs from "./components/ContactUs.jsx"; // Import the ContactUs component
 import RestaurantMenu from './components/RestaurantMenu.jsx';
+import OrderSummary from './components/OrderSummary.jsx'; // Import the OrderSummary component
 
 function App() {
   return (
@@ -43,6 +44,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />
+      },
+      {
+        path: "/orderSummary",
+        element: <OrderSummary /> 
       },
     ]
   }
