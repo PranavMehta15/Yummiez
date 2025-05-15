@@ -37,10 +37,10 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Company</h4>
             <ul>
-              <li><Link to={"/about"}><a href="/about">About Us</a></Link></li>
+            <li><Link to="/about">About Us</Link></li>
               <li><a href="/careers">Careers</a></li>
               <li><a href="/team">Team</a></li>
-              <li><Link to={"/contactUs"}><a href="/pro">Contact Us</a></Link></li> {/* Added Yummiez Pro */}
+              <li><Link to={"/contactUs"}>Contact Us</Link></li> {/* Added Yummiez Pro */}
             </ul>
           </div>
           <div className="footer-column">

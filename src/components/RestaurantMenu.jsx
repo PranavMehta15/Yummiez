@@ -19,8 +19,8 @@ const RestaurantMenu = () => {
         );
         const json = await data.json();
 
-        console.log(json?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.itemCards);
-        setRestaurant(json?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.itemCards || []);
+        //console.log(json?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card?.card?.itemCards);
+        setRestaurant(json?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards || []);
         setRestaurantDetails(json?.data?.cards?.[2]?.card?.card?.info || {});
     }
     
@@ -33,18 +33,24 @@ const RestaurantMenu = () => {
                 <h2>{restaurantDetails?.slugs?.areaName}</h2>
             </div>
             <ul className="menu-list">
-                {Object.values(restaurant).map((item) => (
-                    <li key={item.card.info.id}>
-                        <img
-                            src={
-                                "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" +
-                                item.card.info.imageId
-                            }
-                            alt={item.card.info.name}
-                        />
-                        <span className="item-name">{item.card.info.name}</span>
-                        <span className="item-price">₹{(item.card.info.price || 0) / 100}</span> {/* Price in rupees */}
-                    </li>
+                {Object.values(restaurant).map((item2,index) => (
+                    <div key={item2.card?.card?.title||index}>
+                       
+                        {Object.values(item2.card?.card?.itemCards || []).map((item) => (
+                            <li key={item.card.info.id}>
+                                <img
+                                    src={
+                                        "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/" +
+                                        item.card.info.imageId
+                                    }
+                                    alt={item.card.info.name}
+                                />
+                                <span className="item-name">{item.card.info.name}</span>
+                                <span className="item-price">₹{(item.card.info.price || 0) / 100}</span> {/* Price in rupees */}
+                                <button>Add to Cart</button>
+                            </li>
+                        ))}
+                    </div>
                 ))}
             </ul>
         </div>
