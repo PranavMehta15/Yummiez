@@ -1,6 +1,7 @@
 * {
     color: #712e2e;
     font-family: Arial, sans-serif;
+    text-decoration: none;
   }
   
   .card-container {
@@ -12,15 +13,17 @@
   }
   
   .card-container .card {
-    width: 360px;
+    width: 350px;
+    height: 350px; /* Fixed height for uniformity */
     padding: 15px;
-    /* margin: 20px; */
+    margin: 20px;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 0.3s ease-in-out;
   }
+
   
   .card-container .card:hover {
     transform: scale(1.05); /* Adds a hover effect */
@@ -39,17 +42,20 @@
     margin: 10px 0;
     height: auto;
     color: black; /* Override global red color for better readability */
+    
   }
   
   .card-container .card div {
     font-size: 14px;
     margin: 5px 0;
     color: #555;
+    
   }
   
   .card-container .card p {
     font-size: 16px;
     font-weight: bold;
     margin: 5px 0;
+    
   }
   
