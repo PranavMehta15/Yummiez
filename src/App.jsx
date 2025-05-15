@@ -7,6 +7,8 @@ import Home from './components/Home.jsx';
 import Footer from "./components/Footer.jsx";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import AboutUs from "./components/AboutUs.jsx";
+import Careers from "./components/Careers.jsx";
+
 import Error from "./components/Error.jsx"; // Import the Error component
 import ContactUs from "./components/ContactUs.jsx"; // Import the ContactUs component
 import RestaurantMenu from './components/RestaurantMenu.jsx';
@@ -40,6 +42,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contactUs",
         element: <ContactUs />
+      },
+      {
+        path: "/careers",
+        element: <Careers />
       },
       {
         path: "/restaurant/:id",
