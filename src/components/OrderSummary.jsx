@@ -157,9 +157,9 @@ export default function OrderSummary() {
       </div>
 
       {/* Payment Modal */}
-      {isPaymentModalOpen && (
-        <PaymentGateway />
-      )}
+      {isPaymentModalOpen && 
+            <PaymentGateway />
+         }
     </div>
   );
 }

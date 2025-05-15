@@ -1,3 +1,5 @@
+export const cartItem = {value:[]};
+
 export const data = [
     {
       "info": {
