@@ -12,7 +12,7 @@ function HomeTop() {
     <div className="slider-container2">
       <div className="card2">
         {dishes?.map((item, index) => (
-          <div key={index} className="card">
+          <div key={index} className="card3">
             {item?.imageId && (
               <img src={`${cloudinaryBaseUrl}${item.imageId}`} alt="Cloudinary Image" />
             )}

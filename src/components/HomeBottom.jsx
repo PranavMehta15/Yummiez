@@ -26,6 +26,7 @@ function HomeBottom(props) {
               {item?.info?.sla?.slaString}
             </div>
             {item?.info?.cuisines.join(", ")}
+            <br /><br />
             {item.info.areaName}
           </div>
           </Link>

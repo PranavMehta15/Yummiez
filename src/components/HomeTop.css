@@ -26,3 +26,26 @@
     padding: 5px;
     text-align: center;
 }
+
+.card3 {
+    width: 350px;
+    padding: 15px;
+    margin: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+.card3:hover {
+    transform: scale(1.05); /* Adds a hover effect */
+  }
+  
+.card3 img {
+    width: 170px;
+    height: 170px; /* Ensuring consistent image size */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
