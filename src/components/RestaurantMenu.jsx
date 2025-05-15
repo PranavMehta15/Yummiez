@@ -47,7 +47,7 @@ const RestaurantMenu = () => {
                                 />
                                 <span className="item-name">{item.card.info.name}</span>
                                 <span className="item-price">₹{(item.card.info.price || 0) / 100}</span> {/* Price in rupees */}
-                                <button>Add to Cart</button>
+                                <button className="add-button">+Add</button>
                             </li>
                         ))}
                     </div>

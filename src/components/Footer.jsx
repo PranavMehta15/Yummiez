@@ -70,7 +70,6 @@ const Footer = () => {
 
         {/* Social Media Section */}
         <div className="footer-social">
-          <h4>Social Links</h4>
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
             <i className="fab fa-linkedin-in"></i>
           </a>
