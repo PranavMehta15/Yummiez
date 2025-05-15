@@ -1,21 +1,8 @@
 // OrderSummary.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './OrderSummary.css';
+import { cartItem } from './Constant';
 
-const initialCart = [
-  {
-    id: 1,
-    name: 'Original Whopper Chicken',
-    price: 209,
-    qty: 1,
-  },
-  {
-    id: 2,
-    name: 'Crispy Chicken + Crispy Chicken',
-    price: 139,
-    qty: 1,
-  },
-];
 
 const initialAddresses = [
   { id: 1, label: 'Home', details: '1234, Sector 47C, Chandigarh' },
@@ -24,13 +11,15 @@ const initialAddresses = [
 ];
 
 export default function OrderSummary() {
-  const [cart, setCart] = useState(initialCart);
+  const [cart, setCart] = useState([]);
   const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
   const [addresses, setAddresses] = useState(initialAddresses); // Use state for addresses
   const [newAddress, setNewAddress] = useState(''); // State for new address input
   const [selectedAddress, setSelectedAddress] = useState(null);
-
+  useEffect(()=>{
+    setCart(cartItem.value)
+  },[cartItem]);
   const addNewAddress = () => {
     if (newAddress.trim()) {
       const newAddressObj = {
@@ -102,7 +91,7 @@ export default function OrderSummary() {
 
         {/* Cart Items */}
         <div className="cart-section">
-          <h2>Your Cart</h2>
+          <h2 id='333'>Your Cart</h2>
           {cart.map(item => (
             <div key={item.id} className="cart-item">
               <div>
