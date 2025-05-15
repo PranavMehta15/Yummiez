@@ -1,7 +1,7 @@
 
 .about-container {
     padding: 4rem 1rem;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Vibrant gradient background */
+    background: linear-gradient(135deg, #fa8072); /* Vibrant gradient background */
     color: #ffffff; /* White text color */
     font-family: 'Poppins', Arial, sans-serif;
     text-align: center;
@@ -46,7 +46,7 @@
 .about-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #ff7e5f; /* Vibrant orange color for the title */
+    color: #fa8072; /* Vibrant orange color for the title */
     margin-bottom: 1rem;
 }
 

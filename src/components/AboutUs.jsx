@@ -11,22 +11,27 @@ export default function About() {
       <div className="about-content">
         <div className="about-image">
           <img
-            src="./logo.png"
-            alt="image"
+            src="./fulllogo.png"
+            alt="Yummiez Logo"
           />
         </div>
         <div className="about-text">
           <h2 className="about-title">
-            The development of yummiez is carried out by passionate developers
+            Delivering Happiness, One Meal at a Time
           </h2>
           <p className="about-paragraph">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum omnis voluptatem
-            accusantium nemo perspiciatis delectus atque autem! Voluptatum tenetur beatae unde
-            aperiam, repellat expedita consequatur! Officiis id consequatur atque doloremque!
+            Yummiez is your trusted food delivery platform, bringing delicious meals from your favorite 
+            restaurants straight to your doorstep. We are committed to connecting people with the food 
+            they love, offering convenience, variety, and exceptional service.
           </p>
           <p className="about-paragraph">
-            Nobis minus voluptatibus pariatur dignissimos libero quaerat iure expedita at?
-            Asperiores nemo possimus nesciunt dicta veniam aspernatur quam mollitia.
+            Whether you're craving a quick snack, a hearty meal, or a gourmet experience, Yummiez has 
+            got you covered. Our platform partners with top restaurants to ensure you have access to 
+            a wide range of cuisines and dishes. With Yummiez, satisfying your hunger has never been easier!
+          </p>
+          <p className="about-paragraph" style={{ fontWeight: 'bold', color: '#6D712E' }}>
+            Developed by: Himanshu Singh, Kartikeya Jakkinapalli, Rupam Das, Pranav Mehta, Mohammad Uzair
+
           </p>
         </div>
       </div>

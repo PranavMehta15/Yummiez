@@ -1,6 +1,6 @@
-// OrderSummary.jsx
 import React, { useState } from 'react';
 import './OrderSummary.css';
+import PaymentGateway from './PaymentGateway'; // Import your PaymentGateway component
 
 const initialCart = [
   {
@@ -27,9 +27,10 @@ export default function OrderSummary() {
   const [cart, setCart] = useState(initialCart);
   const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
-  const [addresses, setAddresses] = useState(initialAddresses); // Use state for addresses
-  const [newAddress, setNewAddress] = useState(''); // State for new address input
+  const [addresses, setAddresses] = useState(initialAddresses);
+  const [newAddress, setNewAddress] = useState('');
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false); // State for modal visibility
 
   const addNewAddress = () => {
     if (newAddress.trim()) {
@@ -67,6 +68,10 @@ export default function OrderSummary() {
 
   const itemTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
   const finalTotal = itemTotal - discount;
+
+  const togglePaymentModal = () => {
+    setIsPaymentModalOpen(!isPaymentModalOpen);
+  };
 
   return (
     <div className="order-summary">
@@ -145,9 +150,16 @@ export default function OrderSummary() {
             <span>To Pay</span>
             <span>₹{finalTotal}</span>
           </div>
-          <button className="pay-btn">Proceed to Payment</button>
+          <button className="pay-btn" onClick={togglePaymentModal}>
+            Proceed to Payment
+          </button>
         </div>
       </div>
+
+      {/* Payment Modal */}
+      {isPaymentModalOpen && (
+        <PaymentGateway />
+      )}
     </div>
   );
 }

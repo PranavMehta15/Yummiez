@@ -11,6 +11,7 @@ import Error from "./components/Error.jsx"; // Import the Error component
 import ContactUs from "./components/ContactUs.jsx"; // Import the ContactUs component
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import OrderSummary from './components/OrderSummary.jsx'; // Import the OrderSummary component
+import PaymentGateway from './components/PaymentGateway.jsx';
 
 function App() {
   return (
@@ -49,6 +50,10 @@ const appRouter = createBrowserRouter([
         path: "/orderSummary",
         element: <OrderSummary /> 
       },
+      {
+        path: "/PaymentGateway",
+        element: <PaymentGateway />
+      }
     ]
   }
 ]);
