@@ -14,11 +14,14 @@ export default function Navbar() {
  
   return (
     <nav className="navbar">
-      <div className="logo"><Link className ="home-logo" to={"/"}>YUMMIEZ</Link></div>
+      <div className="logo"><Link to={"/"}>YUMMIEZ</Link></div>
       <div className="nav-buttons">
         <button className="partner-btn" onClick={openPartner}>Yummiez Partner</button>
         <button className="login-btn" onClick={openLogin}>Login</button>
         <button className="signup-btn" onClick={openSignup}>Sign Up</button>
+        <Link to="/orderSummary">
+          <button className="cart-btn">Cart</button> 
+        </Link>
       </div>
  
       {/* Conditional Popups */}
