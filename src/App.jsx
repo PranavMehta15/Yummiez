@@ -18,6 +18,8 @@ import OrderSummary from './components/OrderSummary.jsx'; // Import the OrderSum
 import PaymentGateway from './components/PaymentGateway.jsx';
 import TNC from './components/TNC.jsx';//terms and conditions
 import Privacy from './components/Privacy.jsx';  //privacy policy
+import Cookie from './components/Cookie.jsx';//cookie policy
+
 function App() {
   return (
     <div className="App">
@@ -71,6 +73,11 @@ const appRouter = createBrowserRouter([
         path: "/privacy",
         element: <Privacy />
       },
+      {
+        path: "/cookies",
+        element: <Cookie />
+      },
+
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />
