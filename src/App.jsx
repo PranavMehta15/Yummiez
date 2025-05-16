@@ -8,13 +8,16 @@ import Footer from "./components/Footer.jsx";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import AboutUs from "./components/AboutUs.jsx";
 import Careers from "./components/Careers.jsx";
-
+import Team from './components/Team.jsx';
+import Help from './components/Help.jsx';
+import Partnership from './components/partnership.jsx';
 import Error from "./components/Error.jsx"; // Import the Error component
 import ContactUs from "./components/ContactUs.jsx"; // Import the ContactUs component
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import OrderSummary from './components/OrderSummary.jsx'; // Import the OrderSummary component
 import PaymentGateway from './components/PaymentGateway.jsx';
-
+import TNC from './components/TNC.jsx';//terms and conditions
+import Privacy from './components/Privacy.jsx';  //privacy policy
 function App() {
   return (
     <div className="App">
@@ -47,6 +50,26 @@ const appRouter = createBrowserRouter([
       {
         path: "/careers",
         element: <Careers />
+      },
+      {
+        path: "/help",
+        element: <Help />
+      },
+      {
+        path: "/partner",
+        element: <Partnership />
+      },
+       {
+        path: "/team",
+        element: <Team />
+      },
+      {
+        path: "/terms",
+        element: <TNC />
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />
       },
       {
         path: "/restaurant/:id",
