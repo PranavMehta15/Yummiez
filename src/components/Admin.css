@@ -1,0 +1,173 @@
+.admin-container {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Sidebar styling */
+.admin-sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+    background-color: #444;
+}
+
+/* Main content styling */
+.admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-header {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.admin-header h1 {
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.admin-content {
+    padding: 20px;
+}
+
+.admin-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form styling */
+.food-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.food-form label {
+    font-size: 1rem;
+    color: #333;
+}
+
+.food-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.food-form button {
+    padding: 10px;
+    background-color: #fc8019;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.food-form button:hover {
+    background-color: #e67317;
+}
+
+/* Food items styling */
+.food-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.food-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+}
+
+.food-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.food-item h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.food-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Style for the Link component */
+.sidebar-menu .menu-item a {
+    text-decoration: none; /* Remove underline */
+    color: inherit;
+}
+
+.sidebar-menu .menu-item a:hover {
+    color: #fc8019; /* Optional: Add a hover effect (orange color) */
+}
+
+/* New styles for additional functionality */
+.admin-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.admin-footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.admin-footer a {
+    color: #fc8019;
+    text-decoration: none;
+}
+
+.admin-footer a:hover {
+    text-decoration: underline;
+}
