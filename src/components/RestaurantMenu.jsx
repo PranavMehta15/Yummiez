@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./RestaurantMenu.css";
 import { cartItem } from "./Constant";
+
 function getRandomNumber() {
   return Math.floor(Math.random() * (300 - 100 + 1)) + 100;
 }
@@ -11,12 +12,12 @@ const RestaurantMenu = () => {
   const [restaurant, setRestaurant] = useState({});
   const [restaurantDetails, setRestaurantDetails] = useState({});
   const [order, setOrder] = useState([]);
-  const [priceMap, setPriceMap] = useState({}); // State to store random prices
+  const [priceMap, setPriceMap] = useState({});
+  const [addedItems, setAddedItems] = useState(new Set()); // Track added items
 
   useEffect(() => {
     cartItem.value = order;
   }, [order]);
-  console.log(order);
 
   useEffect(() => {
     getRestaurantInfo();
@@ -41,28 +42,27 @@ const RestaurantMenu = () => {
       (cartItem) => cartItem.id === item.id
     );
     if (existingItemIndex !== -1) {
-      // If item already exists, increase its quantity
       cartItem.value[existingItemIndex].quantity += 1;
     } else {
-      // Add new item with quantity 1
       cartItem.value.push({
         id: item.id,
         name: item.name,
         price: item.price,
-        quantity: 1, // Initialize quantity
+        quantity: 1,
       });
     }
-    setOrder([...cartItem.value]); // Update local state to trigger re-render
+    setOrder([...cartItem.value]);
+    setAddedItems((prev) => new Set(prev).add(item.id)); // Mark item as added
   };
 
   const getPrice = (itemId, originalPrice) => {
     if (priceMap[itemId]) {
-      return priceMap[itemId]; // Return the stored price if it exists
+      return priceMap[itemId];
     }
     const randomPrice = originalPrice
       ? (originalPrice / 100).toFixed(2)
       : getRandomNumber();
-    setPriceMap((prev) => ({ ...prev, [itemId]: randomPrice })); // Store the price
+    setPriceMap((prev) => ({ ...prev, [itemId]: randomPrice }));
     return randomPrice;
   };
 
@@ -90,18 +90,24 @@ const RestaurantMenu = () => {
                   />
                   <span className="item-name">{item.card.info.name}</span>
                   <span className="item-price">₹{price}</span>
-                  <button
-                    className="add-button"
-                    onClick={() =>
-                      addToCart({
-                        id: item.card.info.id,
-                        name: item.card.info.name,
-                        price: price,
-                      })
-                    }
-                  >
-                    Add to Cart
-                  </button>
+                  {addedItems.has(item.card.info.id) ? (
+                    <button className="add-button" disabled>
+                      Added
+                    </button>
+                  ) : (
+                    <button
+                      className="add-button"
+                      onClick={() =>
+                        addToCart({
+                          id: item.card.info.id,
+                          name: item.card.info.name,
+                          price: price,
+                        })
+                      }
+                    >
+                      Add to Cart
+                    </button>
+                  )}
                 </li>
               );
             })}
