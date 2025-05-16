@@ -1,11 +1,11 @@
 import React from "react";
-import "./Home.css";
+// import "./Home.css";
 import HomeTop from "./HomeTop";
 import HomeBottom from "./HomeBottom";
 import Searchbox from "./Searchbox";
-import About from "./AboutUs";
+// import About from "./AboutUs";
 
-const cloudinaryBaseUrl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+// const cloudinaryBaseUrl = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 function Home() {
   return (
     <div className="card-container">
