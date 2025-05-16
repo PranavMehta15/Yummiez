@@ -6,13 +6,13 @@ function getRandomNumber() {
   return Math.floor(Math.random() * (300 - 100 + 1)) + 100;
 }
 
-
 const RestaurantMenu = () => {
-
   const params = useParams();
   const [restaurant, setRestaurant] = useState({});
   const [restaurantDetails, setRestaurantDetails] = useState({});
   const [order, setOrder] = useState([]);
+  const [priceMap, setPriceMap] = useState({}); // State to store random prices
+
   useEffect(() => {
     cartItem.value = order;
   }, [order]);
@@ -36,6 +36,36 @@ const RestaurantMenu = () => {
     setRestaurantDetails(json?.data?.cards?.[2]?.card?.card?.info || {});
   }
 
+  const addToCart = (item) => {
+    const existingItemIndex = cartItem.value.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+    if (existingItemIndex !== -1) {
+      // If item already exists, increase its quantity
+      cartItem.value[existingItemIndex].quantity += 1;
+    } else {
+      // Add new item with quantity 1
+      cartItem.value.push({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: 1, // Initialize quantity
+      });
+    }
+    setOrder([...cartItem.value]); // Update local state to trigger re-render
+  };
+
+  const getPrice = (itemId, originalPrice) => {
+    if (priceMap[itemId]) {
+      return priceMap[itemId]; // Return the stored price if it exists
+    }
+    const randomPrice = originalPrice
+      ? (originalPrice / 100).toFixed(2)
+      : getRandomNumber();
+    setPriceMap((prev) => ({ ...prev, [itemId]: randomPrice })); // Store the price
+    return randomPrice;
+  };
+
   return (
     <div className="restaurant-menu-container">
       <div className="restaurant-details">
@@ -47,10 +77,7 @@ const RestaurantMenu = () => {
         {Object.values(restaurant).map((item2, index) => (
           <div key={item2.card?.card?.title || index}>
             {Object.values(item2.card?.card?.itemCards || []).map((item) => {
-              // Generate a random price if the price is missing
-              const randomPrice = item.card.info.price
-                ? (item.card.info.price / 100).toFixed(2)
-                : getRandomNumber();
+              const price = getPrice(item.card.info.id, item.card.info.price);
 
               return (
                 <li key={item.card.info.id}>
@@ -62,20 +89,18 @@ const RestaurantMenu = () => {
                     alt={item.card.info.name}
                   />
                   <span className="item-name">{item.card.info.name}</span>
-                  <span className="item-price">₹{randomPrice}</span>
+                  <span className="item-price">₹{price}</span>
                   <button
                     className="add-button"
-                    onClick={() => {
-                      let tempArr = [...order];
-                      tempArr.push({
+                    onClick={() =>
+                      addToCart({
+                        id: item.card.info.id,
                         name: item.card.info.name,
-                        price: randomPrice, // Use the same random price
-                      });
-                      setOrder(tempArr);
-                       // Update the state with the new array
-                    }}
+                        price: price,
+                      })
+                    }
                   >
-                    +Add
+                    Add to Cart
                   </button>
                 </li>
               );
