@@ -1,53 +1,68 @@
 import React, { useState } from "react";
-import "./LoginPopup.css";
+import { useNavigate } from "react-router-dom"; // React Router's navigation hook
+import axios from "axios"; 
+import "./partnership.css"; 
 
-function Partner({ onClose }) {
-    const [showRegisterPage, setShowRegisterPage] = useState(false);
+function Partner() {
+    const [showRegisterPage, setShowRegisterPage] = useState(false); 
+    const [restaurantId, setRestaurantId] = useState(""); 
+    const navigate = useNavigate(); // React Router's navigation hook
+
+    const handleContinue = async (e) => {
+        e.preventDefault();
+
+        try {
+            // Check if the restaurant ID exists in the backend
+            const response = await axios.get(`http://localhost:3000/restaurants/${restaurantId}`);
+            if (response.status === 200) {
+                // Navigate to the Admin Page with the restaurant ID
+                navigate(`/admin/${restaurantId}`);
+            } else {
+                alert("Invalid Restaurant ID. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error verifying restaurant ID:", error);
+            alert("Invalid Restaurant ID. Please try again.");
+        }
+    };
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <button className="close-btn" onClick={onClose}>
-                    &times;
-                </button>
-
-                {/* Get Started Page */}
-                {!showRegisterPage && (
-                    <div className="get-started-form">
-                        <div className="modal-header">
-                            <h1>Partner with Yummiez</h1>
-                            <p>Access</p>
-                        </div>
-                        <h2>Get Started</h2>
-                        <p>Enter a mobile number or restaurant ID to continue</p>
-                        <form>
-                            <input
-                                type="text"
-                                placeholder="Enter Restaurant ID / Mobile number"
-                                required
-                            />
-                            <div className="button-container">
-                            <button type="submit" className="continue-btn" style={{ marginTop: "2px" }}>Continue</button>
-                            <button
-                                type="button"
-                                className="register-btn"
-                                onClick={() => setShowRegisterPage(true)}
-                                style={{ marginTop: "10px" }}
-                            >
-                                Register
-                            </button>
-                            </div>
-                            
-                        </form>
-                        <p className="terms">
-                            By logging in, I agree to Yummiez’s <a href="#">terms & conditions</a>
-                        </p>
-                    </div>
-                )}
-
-                {/* Register Page */}
-                {showRegisterPage && <Register onBack={() => setShowRegisterPage(false)} />}
+        <div className="partner-container">
+            <div className="partner-header">
+                <h1>Partner with Yummiez</h1>
+                <p>Access</p>
             </div>
+
+            {/* Get Started Page */}
+            {!showRegisterPage && (
+                <div className="partner-form get-started-form">
+                    <h2>Get Started</h2>
+                    <p>Enter a mobile number or restaurant ID to continue</p>
+                    <form onSubmit={handleContinue}>
+                        <input
+                            type="text"
+                            placeholder="Enter Restaurant ID / Mobile number"
+                            value={restaurantId}
+                            onChange={(e) => setRestaurantId(e.target.value)}
+                            required
+                        />
+                        <button type="submit" style={{ marginTop: "2px" }}>Continue</button>
+                        <button
+                            type="button"
+                            onClick={() => setShowRegisterPage(true)} // Show the Register page
+                            style={{ marginTop: "10px" }}
+                        >
+                            Register
+                        </button>
+                    </form>
+                    <p className="terms">
+                        By logging in, I agree to Yummiez’s <a href="#">terms & conditions</a>
+                    </p>
+                </div>
+            )}
+
+            {/* Register Page */}
+            {showRegisterPage && <Register onBack={() => setShowRegisterPage(false)} />}
         </div>
     );
 }
@@ -61,6 +76,9 @@ function Register({ onBack }) {
         email: "",
     });
 
+    const navigate = useNavigate(); // React Router's navigation hook
+
+    // Function to generate a unique restaurant ID
     function generateRestaurantId() {
         return `RID-${Math.floor(1000 + Math.random() * 9000)}`;
     }
@@ -73,35 +91,24 @@ function Register({ onBack }) {
         e.preventDefault();
 
         try {
-            const response = await fetch("http://localhost:3001/users", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
-            });
+            // Make a POST request to save the restaurant data
+            const response = await axios.post("http://localhost:3000/restaurants", formData);
 
-            if (response.ok) {
-                alert("User registered successfully!");
-                setFormData({
-                    id: generateRestaurantId(),
-                    name: "",
-                    address: "",
-                    phone: "",
-                    email: "",
-                });
-                onBack();
+            if (response.status === 201) {
+                alert("Restaurant registered successfully!");
+                // Redirect to the Admin Panel with the restaurant ID
+                navigate(`/admin/${formData.id}`);
             } else {
-                const errorData = await response.json();
-                console.error("Error response from server:", errorData);
-                alert("Failed to register user. Please try again.");
+                alert("Failed to register the restaurant. Please try again.");
             }
         } catch (error) {
-            console.error("Error registering user:", error);
-            alert("An error occurred while registering. Please check the console for details.");
+            console.error("Error registering restaurant:", error);
+            alert("An error occurred while registering the restaurant.");
         }
     };
 
     return (
-        <div className="restaurant-details-form">
+        <div className="partner-form restaurant-details-form">
             <h2>Register Your Restaurant</h2>
             <p>Enter the details of your restaurant to register</p>
             <form onSubmit={handleSubmit}>
@@ -115,7 +122,7 @@ function Register({ onBack }) {
                                     name="id"
                                     type="text"
                                     value={formData.id}
-                                    readOnly
+                                    readOnly // Make the field read-only
                                 />
                             </td>
                         </tr>
@@ -177,18 +184,14 @@ function Register({ onBack }) {
                         </tr>
                     </tbody>
                 </table>
-                <div className="button-container">
-                <button type="submit" className="register-btn">Register</button>
+                <button type="submit">Register</button>
                 <button
                     type="button"
-                    className="continue-btn"
-                    onClick={onBack}
+                    onClick={onBack} // Go back to the Get Started page
                     style={{ marginTop: "10px" }}
                 >
                     Back
                 </button>
-                </div>
-                
             </form>
         </div>
     );
