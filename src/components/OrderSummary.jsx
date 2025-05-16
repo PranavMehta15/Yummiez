@@ -1,21 +1,7 @@
-import React, { useState } from 'react';
+// OrderSummary.jsx
+import React, { useEffect, useState } from 'react';
 import './OrderSummary.css';
-import PaymentGateway from './PaymentGateway'; // Import your PaymentGateway component
-
-const initialCart = [
-  {
-    id: 1,
-    name: 'Original Whopper Chicken',
-    price: 209,
-    qty: 1,
-  },
-  {
-    id: 2,
-    name: 'Crispy Chicken + Crispy Chicken',
-    price: 139,
-    qty: 1,
-  },
-];
+import { cartItem } from './Constant';
 
 const initialAddresses = [
   { id: 1, label: 'Home', details: '1234, Sector 47C, Chandigarh' },
@@ -24,13 +10,16 @@ const initialAddresses = [
 ];
 
 export default function OrderSummary() {
-  const [cart, setCart] = useState(initialCart);
+  const [cart, setCart] = useState([]);
   const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
-  const [addresses, setAddresses] = useState(initialAddresses);
-  const [newAddress, setNewAddress] = useState('');
+  const [addresses, setAddresses] = useState(initialAddresses); // Use state for addresses
+  const [newAddress, setNewAddress] = useState(''); // State for new address input
   const [selectedAddress, setSelectedAddress] = useState(null);
-  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false); // State for modal visibility
+
+  useEffect(() => {
+    setCart([...cartItem.value]); // Sync with cartItem whenever it changes
+  }, [cartItem.value]);
 
   const addNewAddress = () => {
     if (newAddress.trim()) {
@@ -45,13 +34,17 @@ export default function OrderSummary() {
   };
 
   const updateQty = (id, delta) => {
-    setCart(prev =>
-      prev.map(item =>
-        item.id === id
-          ? { ...item, qty: Math.max(1, item.qty + delta) }
-          : item
-      )
-    );
+    const updatedCart = cart.map((item) => {
+      if (item.id === id) {
+        const newQuantity = item.quantity + delta;
+        return newQuantity > 0
+          ? { ...item, quantity: newQuantity }
+          : null; // Remove item if quantity is 0
+      }
+      return item;
+    }).filter(Boolean); // Remove null items
+    cartItem.value = updatedCart; // Update global cartItem
+    setCart(updatedCart); // Update local state
   };
 
   const removeItem = id => {
@@ -66,12 +59,11 @@ export default function OrderSummary() {
     }
   };
 
-  const itemTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const itemTotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
   const finalTotal = itemTotal - discount;
-
-  const togglePaymentModal = () => {
-    setIsPaymentModalOpen(!isPaymentModalOpen);
-  };
 
   return (
     <div className="order-summary">
@@ -108,7 +100,7 @@ export default function OrderSummary() {
         {/* Cart Items */}
         <div className="cart-section">
           <h2>Your Cart</h2>
-          {cart.map(item => (
+          {cart.map((item) => (
             <div key={item.id} className="cart-item">
               <div>
                 <h4>{item.name}</h4>
@@ -116,9 +108,11 @@ export default function OrderSummary() {
               </div>
               <div className="item-controls">
                 <button onClick={() => updateQty(item.id, -1)}>-</button>
-                <span>{item.qty}</span>
+                <span>{item.quantity}</span>
                 <button onClick={() => updateQty(item.id, 1)}>+</button>
-                <button onClick={() => removeItem(item.id)} className="delete-btn">🗑️</button>
+                <button onClick={() => updateQty(item.id, -item.quantity)} className="delete-btn">
+                  🗑️
+                </button>
               </div>
             </div>
           ))}
@@ -150,16 +144,9 @@ export default function OrderSummary() {
             <span>To Pay</span>
             <span>₹{finalTotal}</span>
           </div>
-          <button className="pay-btn" onClick={togglePaymentModal}>
-            Proceed to Payment
-          </button>
+          <button className="pay-btn">Proceed to Payment</button>
         </div>
       </div>
-
-      {/* Payment Modal */}
-      {isPaymentModalOpen && 
-            <PaymentGateway />
-         }
     </div>
   );
 }
