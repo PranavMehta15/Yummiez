@@ -16,7 +16,8 @@ import ContactUs from "./components/ContactUs.jsx"; // Import the ContactUs comp
 import RestaurantMenu from './components/RestaurantMenu.jsx';
 import OrderSummary from './components/OrderSummary.jsx'; // Import the OrderSummary component
 import PaymentGateway from './components/PaymentGateway.jsx';
-
+import TNC from './components/TNC.jsx';//terms and conditions
+import Privacy from './components/Privacy.jsx';  //privacy policy
 function App() {
   return (
     <div className="App">
@@ -62,7 +63,14 @@ const appRouter = createBrowserRouter([
         path: "/team",
         element: <Team />
       },
-      
+      {
+        path: "/terms",
+        element: <TNC />
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />
+      },
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />
