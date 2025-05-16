@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import './OrderSummary.css';
 import { cartItem } from './Constant';
+import PaymentGateway from './PaymentGateway';
 
 const initialAddresses = [
   { id: 1, label: 'Home', details: '1234, Sector 47C, Chandigarh' },
@@ -16,6 +17,7 @@ export default function OrderSummary() {
   const [addresses, setAddresses] = useState(initialAddresses); // Use state for addresses
   const [newAddress, setNewAddress] = useState(''); // State for new address input
   const [selectedAddress, setSelectedAddress] = useState(null);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   useEffect(() => {
     setCart([...cartItem.value]); // Sync with cartItem whenever it changes
@@ -64,6 +66,9 @@ export default function OrderSummary() {
     0
   );
   const finalTotal = itemTotal - discount;
+  const togglePaymentModal = () => {
+    setIsPaymentModalOpen(!isPaymentModalOpen);
+  };
 
   return (
     <div className="order-summary">
@@ -144,9 +149,12 @@ export default function OrderSummary() {
             <span>To Pay</span>
             <span>₹{finalTotal}</span>
           </div>
-          <button className="pay-btn">Proceed to Payment</button>
+          <button className="pay-btn" onClick={togglePaymentModal}>Proceed to Payment</button>
         </div>
       </div>
+      {isPaymentModalOpen &&
+            <PaymentGateway />
+         }
     </div>
   );
 }

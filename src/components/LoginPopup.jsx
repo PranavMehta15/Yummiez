@@ -3,7 +3,7 @@ import "./LoginPopup.css";
 import logo from "../assets/fries_logo.png";
 import ForgetPassword from "./ForgetPassword";
 
-export default function LoginPopup({ onClose }) {
+export default function LoginPopup({ onClose, onLogin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isClosing, setIsClosing] = useState(false);
@@ -46,6 +46,9 @@ export default function LoginPopup({ onClose }) {
       setSuccessMessage(`Logged in successfully as: ${username}`);
       setError("");
       console.log(`Login successful for user: ${username}`);
+
+      // Call the onLogin function passed from Navbar
+      onLogin(username);
 
       setTimeout(() => {
         triggerClose();

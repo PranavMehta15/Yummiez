@@ -8,6 +8,7 @@ import Footer from "./components/Footer.jsx";
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import AboutUs from "./components/AboutUs.jsx";
 import Careers from "./components/Careers.jsx";
+import Team from './components/Team.jsx';
 
 import Error from "./components/Error.jsx"; // Import the Error component
 import ContactUs from "./components/ContactUs.jsx"; // Import the ContactUs component
@@ -48,6 +49,19 @@ const appRouter = createBrowserRouter([
         path: "/careers",
         element: <Careers />
       },
+      {
+        path: "/help",
+        element: <Help />
+      },
+      {
+        path: "/partner",
+        element: <Partner />
+      },
+       {
+        path: "/team",
+        element: <Team />
+      },
+      
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />
