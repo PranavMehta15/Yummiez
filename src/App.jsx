@@ -9,7 +9,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import AboutUs from "./components/AboutUs.jsx";
 import Careers from "./components/Careers.jsx";
 import Team from './components/Team.jsx';
-
+import Help from './components/Help.jsx';
+import Partnership from './components/partnership.jsx';
 import Error from "./components/Error.jsx"; // Import the Error component
 import ContactUs from "./components/ContactUs.jsx"; // Import the ContactUs component
 import RestaurantMenu from './components/RestaurantMenu.jsx';
@@ -55,7 +56,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/partner",
-        element: <Partner />
+        element: <Partnership />
       },
        {
         path: "/team",
