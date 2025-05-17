@@ -27,6 +27,9 @@ export default function OrderSummary() {
     if (cart.length === 0) {
       setDiscount(0); // Remove discount if cart is empty
     }
+    if (itemTotal < 150) {
+      setDiscount(0); // Remove discount if total order value is less than ₹150
+    }
   }, [cart]);
 
   const addNewAddress = () => {
