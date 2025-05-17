@@ -11,7 +11,7 @@ export default function Cookie() {
       <div className="cookie-content">
         <div className="cookie-image">
           <img
-            src="./logo.png"
+            src="./fulllogo.png"
             alt="image"
           />
         </div>
