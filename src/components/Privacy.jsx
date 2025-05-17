@@ -11,7 +11,7 @@ export default function Privacy() {
       <div className="privacy-content">
         <div className="privacy-image">
           <img
-            src="./logo.png"
+            src="./fulllogo.png"
             alt="image"
           />
         </div>
