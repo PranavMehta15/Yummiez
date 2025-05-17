@@ -20,6 +20,10 @@ import TNC from './components/TNC.jsx';//terms and conditions
 import Privacy from './components/Privacy.jsx';  //privacy policy
 import Cookie from './components/Cookie.jsx';//cookie policy
 import Ride from './components/Ride.jsx';//ride with us
+import AdminPanel from "./components/Admin.jsx";
+import ManageRestaurantFood from "./components/ManageRestaurant.jsx";
+import "./App.css"; 
+
 
 function App() {
   return (
@@ -94,8 +98,12 @@ const appRouter = createBrowserRouter([
       {
         path: "/PaymentGateway",
         element: <PaymentGateway />
-      }
+      },
+       { path: "/admin/:restaurantId", element: <AdminPanel /> }, // Admin route
+      { path: "/manage-restaurant-food/:restaurantId", element: <ManageRestaurantFood /> }, // Manage restaurant food route
+      { path: "/manage-restaurant", element: <ManageRestaurantFood /> }, // Manage restaurant route
     ]
+    
   }
 ]);
 function Root() {

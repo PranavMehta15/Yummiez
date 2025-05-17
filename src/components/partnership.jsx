@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom"; // React Router's navigation hoo
 import axios from "axios";
 import "./LoginPopup.css";
 
-function Partner({ onClose }) { // Add onClose as a prop
+function Partner({ onClose }) {
   const [showRegisterPage, setShowRegisterPage] = useState(false);
   const [restaurantId, setRestaurantId] = useState("");
-  const navigate = useNavigate(); // React Router's navigation hook
+  const navigate = useNavigate();
 
   const handleContinue = async (e) => {
     e.preventDefault();
@@ -19,6 +19,7 @@ function Partner({ onClose }) { // Add onClose as a prop
       if (response.status === 200) {
         // Navigate to the Admin Page with the restaurant ID
         navigate(`/admin/${restaurantId}`);
+        if (onClose) onClose(); // Close the modal if onClose is provided
       } else {
         alert("Invalid Restaurant ID. Please try again.");
       }
@@ -81,13 +82,21 @@ function Partner({ onClose }) { // Add onClose as a prop
         )}
 
         {/* Register Page */}
-        {showRegisterPage && <Register onBack={() => setShowRegisterPage(false)} />}
+        {showRegisterPage && (
+          <Register
+            onBack={() => setShowRegisterPage(false)}
+            onRegisterSuccess={(id) => {
+              setShowRegisterPage(false); // Close the register page
+              navigate(`/admin/${id}`); // Navigate to admin
+            }}
+          />
+        )}
       </div>
     </div>
   );
 }
 
-function Register({ onBack }) {
+function Register({ onBack, onRegisterSuccess }) {
   const [formData, setFormData] = useState({
     id: generateRestaurantId(),
     name: "",
@@ -95,8 +104,6 @@ function Register({ onBack }) {
     phone: "",
     email: "",
   });
-
-  const navigate = useNavigate(); // React Router's navigation hook
 
   // Function to generate a unique restaurant ID
   function generateRestaurantId() {
@@ -119,8 +126,7 @@ function Register({ onBack }) {
 
       if (response.status === 201) {
         alert("Restaurant registered successfully!");
-        // Redirect to the Admin Panel with the restaurant ID
-        navigate(`/admin/${formData.id}`);
+        onRegisterSuccess(formData.id); // Trigger navigation to admin
       } else {
         alert("Failed to register the restaurant. Please try again.");
       }

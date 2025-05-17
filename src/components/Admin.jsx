@@ -49,8 +49,7 @@ export default function AdminPanel() {
           <li className="menu-item">
             <Link to="/manage-restaurant" >Manage Restaurants</Link> 
           </li>
-          <li className="menu-item">Orders</li>
-          <li className="menu-item">Users</li>
+     
           <li className="menu-item">Settings</li>
         </ul>
       </aside>
