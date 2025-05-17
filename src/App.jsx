@@ -19,6 +19,7 @@ import PaymentGateway from './components/PaymentGateway.jsx';
 import TNC from './components/TNC.jsx';//terms and conditions
 import Privacy from './components/Privacy.jsx';  //privacy policy
 import Cookie from './components/Cookie.jsx';//cookie policy
+import Ride from './components/Ride.jsx';//ride with us
 
 function App() {
   return (
@@ -76,6 +77,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/cookies",
         element: <Cookie />
+      },
+       {
+        path: "/ride",
+        element: <Ride />
       },
 
       {
