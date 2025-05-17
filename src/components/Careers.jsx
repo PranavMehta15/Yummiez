@@ -11,7 +11,7 @@ export default function Careers() {
       <div className="contact-content">
         <div className="contact-image">
           <img
-            src="./logo.png"
+            src="./fulllogo.png"
             alt="image"
           />
         </div>
