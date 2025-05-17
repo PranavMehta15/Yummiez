@@ -11,7 +11,7 @@ export default function TNC() {
       <div className="tnc-content">
         <div className="tnc-image">
           <img
-            src="./logo.png"
+            src="./fulllogo.png"
             alt="image"
           />
         </div>
