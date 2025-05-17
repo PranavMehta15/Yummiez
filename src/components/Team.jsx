@@ -11,7 +11,7 @@ export default function Team() {
       <div className="team-content">
         <div className="team-image">
           <img
-            src="./logo.png"
+            src="./fulllogo.png"
             alt="image"
           />
         </div>
@@ -19,13 +19,7 @@ export default function Team() {
           <h2 className="team-title">
             Yummiez was born out of <span>Chandigarh University</span> from a peer of <span>Passionate Developers</span>
           </h2>
-          <p className="team-paragraph">
-           
-          </p>
-          <p className="team-paragraph">
-            Nobis minus voluptatibus pariatur dignissimos libero quaerat iure expedita at?
-            Asperiores nemo possimus nesciunt dicta veniam aspernatur quam mollitia.
-          </p>
+       
         </div>
       </div>
     </div>
