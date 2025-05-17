@@ -23,6 +23,12 @@ export default function OrderSummary() {
     setCart([...cartItem.value]); // Sync with cartItem whenever it changes
   }, [cartItem.value]);
 
+  useEffect(() => {
+    if (cart.length === 0) {
+      setDiscount(0); // Remove discount if cart is empty
+    }
+  }, [cart]);
+
   const addNewAddress = () => {
     if (newAddress.trim()) {
       const newAddressObj = {
@@ -55,11 +61,16 @@ export default function OrderSummary() {
 
   const applyCoupon = () => {
     if (coupon.trim().toUpperCase() === 'YUMMY50') {
-      setDiscount(50);
+      if (itemTotal >= 150) {
+        setDiscount(50);
+      } else {
+        alert('Order total is less than ₹150. Discount not applicable.');
+        setDiscount(0);
+      }
     } else {
       setDiscount(0);
     }
-  };
+  }
 
   const itemTotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -67,6 +78,10 @@ export default function OrderSummary() {
   );
   const finalTotal = itemTotal - discount;
   const togglePaymentModal = () => {
+    if (finalTotal === 0) {
+      alert('Order total is ₹0. Please add items to your cart before proceeding to payment.');
+      return; // Prevent opening the payment gateway
+    }
     setIsPaymentModalOpen(!isPaymentModalOpen);
   };
 
