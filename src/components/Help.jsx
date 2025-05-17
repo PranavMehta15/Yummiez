@@ -11,7 +11,7 @@ export default function Help() {
       <div className="help-content">
         <div className="help-image">
           <img
-            src="./logo.png"
+            src="./fulllogo.png"
             alt="image"
           />
         </div>
@@ -21,14 +21,15 @@ export default function Help() {
             Write to us at 
              
           </h2>
-          <h3><span> yummiez@gmail.com</span></h3>
+          <h2 className="help-title">
+            <span> yummiez@gmail.com</span></h2>
           
 
           <h2 className="help-title">
             Or Dial our toll-free number 
              
           </h2>
-          <h3><span> 18006231988</span></h3>
+          <h2 className="help-title"><span> 18006231988</span></h2>
 
 
           <p className="help-paragraph">
