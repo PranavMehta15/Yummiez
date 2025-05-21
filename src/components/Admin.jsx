@@ -45,12 +45,10 @@ export default function AdminPanel() {
       <aside className="admin-sidebar">
         <h2 className="sidebar-title">Admin Panel</h2>
         <ul className="sidebar-menu">
-          <li className="menu-item">Dashboard</li>
           <li className="menu-item">
             <Link to="/manage-restaurant" >Manage Restaurants</Link> 
           </li>
      
-          <li className="menu-item">Settings</li>
         </ul>
       </aside>
 

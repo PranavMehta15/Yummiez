@@ -23,13 +23,14 @@ import Ride from './components/Ride.jsx';//ride with us
 import AdminPanel from "./components/Admin.jsx";
 import ManageRestaurantFood from "./components/ManageRestaurant.jsx";
 import "./App.css"; 
-
+import Location from './components/Location.jsx';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Hero />
+      
       <Outlet />
       <Footer />
     </div>
@@ -44,7 +45,7 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Location/>
       },
       {
         path: "/about",

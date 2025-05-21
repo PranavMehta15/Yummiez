@@ -34,6 +34,13 @@
       "email": "hello@hello.com",
       "password": "Hello@12345",
       "securityAnswer": "hello"
+    },
+    {
+      "id": "ra6q",
+      "username": "himanshu",
+      "email": "himanshu@gmail.com",
+      "password": "Himanshu@2002",
+      "securityAnswer": "none"
     }
   ]
 }

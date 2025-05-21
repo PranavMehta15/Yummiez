@@ -1,15 +1,20 @@
 {
   "restaurants": [
-    
     {
-      
+      "id": "RID-1569",
+      "name": "Food plaza",
+      "address": "gopalganj",
+      "phone": "8767876543",
+      "email": "plaza@gmail.com"
     }
-  
   ],
   "foodItems": [
-    
     {
-      
+      "id": "189c",
+      "name": "Butter Chicke  ",
+      "price": "50",
+      "image": "https://th.bing.com/th/id/OIP._agmi_w-6Lm5d21ji7afzwAAAA?cb=iwp2&rs=1&pid=ImgDetMain",
+      "restaurantId": "RID-1569"
     }
   ]
 }

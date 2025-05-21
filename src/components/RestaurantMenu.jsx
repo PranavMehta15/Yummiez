@@ -13,7 +13,7 @@ const RestaurantMenu = () => {
   const [restaurantDetails, setRestaurantDetails] = useState({});
   const [order, setOrder] = useState([]);
   const [priceMap, setPriceMap] = useState({});
-  const [addedItems, setAddedItems] = useState(new Set()); // Track added items
+  const [addedItems, setAddedItems] = useState(new Set()); 
 
   useEffect(() => {
     cartItem.value = order;

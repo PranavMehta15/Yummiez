@@ -1,10 +1,11 @@
 .admin-container {
     display: flex;
     height: 100vh;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    background-color: #FA8072; /* Updated background color */
+    color: #333;
 }
-
+ 
 /* Sidebar styling */
 .admin-sidebar {
     width: 250px;
@@ -14,102 +15,138 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
-
+ 
 .sidebar-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 20px;
-    color: white;
+    color: #fff;
+    text-align: center;
 }
-
+ 
 .sidebar-menu {
     list-style: none;
     padding: 0;
 }
-
+ 
 .menu-item {
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
+ 
 .menu-item:hover {
     background-color: #444;
+    transform: scale(1.05);
 }
-
+ 
+.sidebar-menu .menu-item a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1rem;
+}
+ 
+.sidebar-menu .menu-item a:hover {
+    color: #FA8072;
+}
+ 
 /* Main content styling */
 .admin-main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px 0 0 10px;
+    overflow: hidden;
 }
-
+ 
 .admin-header {
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
-
+ 
 .admin-header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #333;
+    margin-bottom: 5px;
 }
-
+ 
+.admin-header p {
+    font-size: 1rem;
+    color: #555;
+}
+ 
+/* Content area */
 .admin-content {
     padding: 20px;
 }
-
+ 
 .admin-content h2 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 20px;
     color: #333;
+    text-align: center;
 }
-
+ 
 /* Form styling */
 .food-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
     margin-bottom: 30px;
+    max-width: 500px;
+    margin: 0 auto;
 }
-
+ 
 .food-form label {
     font-size: 1rem;
     color: #684d4d;
+    font-weight: bold;
 }
-
+ 
 .food-form input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
+    transition: border-color 0.3s ease;
 }
-
+ 
+.food-form input:focus {
+    border-color: #FA8072;
+    outline: none;
+}
+ 
 .food-form button {
     padding: 10px;
-    background-color: #fc8019;
+    background-color: #FA8072;
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
-
+ 
 .food-form button:hover {
-    background-color: #e67317;
+    background-color: #6D712E; /* Hover color */
+    transform: scale(1.05);
 }
-
+ 
 /* Food items styling */
 .food-items {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
-
+ 
 .food-item {
     background-color: #fff;
     padding: 15px;
@@ -117,8 +154,14 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 200px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
+ 
+.food-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+ 
 .food-item img {
     width: 100%;
     height: 150px;
@@ -126,29 +169,19 @@
     border-radius: 8px;
     margin-bottom: 10px;
 }
-
+ 
 .food-item h3 {
     font-size: 1.2rem;
     color: #333;
     margin-bottom: 5px;
 }
-
+ 
 .food-item p {
     font-size: 1rem;
     color: #555;
 }
-
-/* Style for the Link component */
-.sidebar-menu .menu-item a {
-    text-decoration: none; /* Remove underline */
-    color: inherit;
-}
-
-.sidebar-menu .menu-item a:hover {
-    color: #fc8019; /* Optional: Add a hover effect (orange color) */
-}
-
-/* New styles for additional functionality */
+ 
+/* Footer styling */
 .admin-footer {
     background-color: #333;
     color: #fff;
@@ -158,17 +191,17 @@
     bottom: 0;
     width: 100%;
 }
-
+ 
 .admin-footer p {
     margin: 0;
     font-size: 0.9rem;
 }
-
+ 
 .admin-footer a {
-    color: #fc8019;
+    color: #FA8072;
     text-decoration: none;
 }
-
+ 
 .admin-footer a:hover {
     text-decoration: underline;
 }
