@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './OrderSummary.css';
 import { cartItem } from './Constant';
 import PaymentGateway from './PaymentGateway';
+import { useNavigate } from "react-router-dom";
 
 const initialAddresses = [
   { id: 1, label: 'Home', details: '1234, Sector 47C, Chandigarh' },
@@ -11,6 +12,16 @@ const initialAddresses = [
 ];
 
 export default function OrderSummary() {
+  const navigate = useNavigate(); // Initialize navigation
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true"; // Check login status
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      alert("You need to log in to access the Cart.");
+      navigate("/"); // Redirect to home page if not logged in
+    }
+  }, [isLoggedIn, navigate]);
+  
   const [cart, setCart] = useState([]);
   const [coupon, setCoupon] = useState('');
   const [discount, setDiscount] = useState(0);
