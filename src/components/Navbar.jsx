@@ -54,9 +54,11 @@ export default function Navbar() {
             <button className="logout-btn" onClick={handleLogout}>Logout</button>
           </>
         )}
+        {isLoggedIn && (
         <Link to="/orderSummary">
           <button className="cart-btn">Cart</button> 
         </Link>
+      )}
       </div>
 
       {/* Conditional Popups */}
