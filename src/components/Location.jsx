@@ -7,7 +7,7 @@ import "./Location.css"; // Import the CSS file
 export const LocationContext = createContext(null);
 
 function Location() {
-  const [area, setArea] = useState("");
+  const [area, setArea] = useState("Chennai");
   const [temparea, setTempArea] = useState("");
   const [longitude, setLongitude] = useState(null);
   const [latitude, setLatitude] = useState(null);
