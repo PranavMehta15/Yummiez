@@ -58,4 +58,53 @@
     margin: 5px 0;
     
   }
-  
+
+.skeleton-card {
+  background: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+}
+
+.skeleton-image {
+  width: 170px;
+  height: 170px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  margin-top: 10px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-text {
+  width: 80%;
+  height: 15px;
+  background: #e0e0e0;
+  border-radius: 4px;
+  margin: 10px 0;
+  animation: shimmer 1.5s infinite;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 20px;
+}
+
+.skeleton-subtitle {
+  width: 50%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}
